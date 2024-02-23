@@ -1,5 +1,5 @@
 import { TabList, Tabs, Tab, TabPanels, TabPanel, Box, Text } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useResume } from '../Context'
 import About from './BuildSteps/About'
 import Education from './BuildSteps/Education'
@@ -8,7 +8,6 @@ import Skills from './BuildSteps/Skills'
 import Work from './BuildSteps/Work'
 
 const Builder = () => {
-
     return (
         <Box
             bg={'white'}
@@ -17,16 +16,16 @@ const Builder = () => {
             rounded={'md'}
             shadow={'md'}
             overflow={'hidden'}
-      border="2px solid blue"  
-      borderRadius="10px"         
+            border="2px solid blue"
+            borderRadius="10px"
         >
             <Tabs isFitted variant='enclosed'>
-                <TabList>
-                    <Tab><Text fontWeight={'medium'}>About</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Education</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Skills</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Work</Text></Tab>
-                    <Tab><Text fontWeight={'medium'}>Projects</Text></Tab>
+                <TabList bg="gray.100" p={2} borderRadius="md">
+                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>About</Tab>
+                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Education</Tab>
+                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Skills</Tab>
+                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Work</Tab>
+                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Projects</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>

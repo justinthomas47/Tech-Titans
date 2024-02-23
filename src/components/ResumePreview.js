@@ -18,36 +18,25 @@ import { BiLinkExternal } from "react-icons/bi";
 const ResumePreview = () => {
   const { theme, about, educationList, skills, workList, projects, printElem } =
     useResume();
-    const imgStyle = {
-      width:"115px",
-      height:"115px",
-     
-      margin:"15px",
+  const imgStyle = {
+    width: "115px",
+    height: "115px",
+    margin: "15px",
+    borderRadius: "50%",
+  };
 
-      borderRadius: "50%",
-     
-    };
   return (
-    <>
-      <Box
-        bg={"white"}
-        w={"full"}
-        rounded={"md"}
-        shadow={"md"}
-        overflow={"hidden"}
-        minH={"100vh"}
-      >
+    <Box bg={"gray.50"} p={6} rounded={"md"} shadow={"md"}>
+      <Box bg={"white"} rounded={"md"} shadow={"lg"} overflow={"hidden"} minH={"100vh"}>
         <div ref={printElem}>
           <HStack>
             {about.picture && (
               <img
                 style={imgStyle}
-                
                 src={about.picture}
                 alt="avatar"
               />
             )}
-
             <VStack m={4} alignItems={"flex-start"} spacing={0.5}>
               <Heading as="h4" size="md">
                 {about.name ? about.name : "Ethan Foster"}
@@ -95,95 +84,20 @@ const ResumePreview = () => {
             spacing={1}
           >
             <VStack mx={2} alignItems={"flex-start"} w={"full"} spacing={6}>
-              // EDUCATION
-              <VStack alignItems={"flex-start"}>
-                <Heading as="h4" size="md" color={"gray.700"}>
-                  EDUCATION
-                </Heading>
-
-                {educationList.map((education) => {
-                  const { degree, school, startYr, endYr, grade } = education;
-
-                  return (
-                    <VStack
-                      spacing={0}
-                      alignItems={"flex-start"}
-                      w={"full"}
-                      pb={2}
-                    >
-                      <Text fontWeight={"medium"}>
-                        {degree ? degree : "B.Tech Computer Engineering"}
-                      </Text>
-                      <Text fontSize={"sm"}>
-                        {school ? school : "Stanford University"}
-                      </Text>
-                      <HStack
-                        fontSize={"xs"}
-                        fontStyle={"italic"}
-                        justifyContent={"space-between"}
-                        w={"full"}
-                      >
-                        <Text>
-                          {startYr ? startYr : 2014} - {endYr ? endYr : 2018}
-                        </Text>
-                        <Text>{grade ? grade : "8.5 CGPA"}</Text>
-                      </HStack>
-                    </VStack>
-                  );
-                })}
-              </VStack>
-              // EDUCATION // WORK EXPERIENCE
-              <VStack alignItems={"flex-start"}>
-                <Heading as="h4" size="md" color={"gray.700"}>
-                  WORK EXPERIENCE
-                </Heading>
-
-                {workList.map((work) => {
-                  const {
-                    position,
-                    type,
-                    company,
-                    startDate,
-                    endDate,
-                    description: desc,
-                  } = work;
-
-                  return (
-                    <VStack
-                      spacing={0.5}
-                      alignItems={"flex-start"}
-                      lineHeight={1.3}
-                      pb={2}
-                    >
-                      <Text fontWeight={"medium"}>
-                        {position ? position : "System Analyst"}
-                      </Text>
-                      <Text fontSize={"sm"}>
-                        {company ? company : "Microsoft"} -{" "}
-                        {type ? type : "Full-time"}
-                      </Text>
-                      <Text fontSize={"xs"} fontStyle={"italic"}>
-                        {startDate ? startDate : "2018-03"} -{" "}
-                        {endDate ? endDate : "2021-12"}
-                      </Text>
-                      <Text fontSize={"sm"} as="p">
-                        {desc
-                          ? desc
-                          : "Enhanced system efficiency by identifying and resolving bugs, implemented crucial website enhancements, and significantly improved overall functionality and speed as a System Analyst."}
-                      </Text>
-                    </VStack>
-                  );
-                })}
-              </VStack>
-              // WORK EXPERIENCE
+              <Section title="EDUCATION">
+                {educationList.map((education, index) => (
+                  <EducationItem key={index} education={education} />
+                ))}
+              </Section>
+              <Section title="WORK EXPERIENCE">
+                {workList.map((work, index) => (
+                  <WorkExperienceItem key={index} work={work} />
+                ))}
+              </Section>
             </VStack>
 
             <VStack mx={2} alignItems={"flex-start"} w={"full"} spacing={6}>
-              // SKILLS
-              <VStack alignItems={"flex-start"}>
-                <Heading as="h4" size="md" color={"gray.700"}>
-                  SKILLS
-                </Heading>
+              <Section title="SKILLS">
                 <Wrap>
                   {skills.map((skill, index) => (
                     <Tag
@@ -197,48 +111,69 @@ const ResumePreview = () => {
                     </Tag>
                   ))}
                 </Wrap>
-              </VStack>
-              // SKILLS // PROJECTS
-              <VStack alignItems={"flex-start"}>
-                <Heading as="h4" size="md" color={"gray.700"}>
-                  PROJECTS
-                </Heading>
-
-                {projects.map((project) => {
-                  const { name, url, description: desc } = project;
-                  return (
-                    <VStack
-                      spacing={0.5}
-                      alignItems={"flex-start"}
-                      lineHeight={1.3}
-                      pb={2}
-                    >
-                      <HStack as="a" href={url} target="_blank" spacing={0.5}>
-                        <Text fontWeight={"medium"} flex={"row"}>
-                          {name ? name : "Project Name"}{" "}
-                        </Text>{" "}
-                        <BiLinkExternal />
-                      </HStack>
-                      <UnorderedList pl={5}>
-                        <ListItem>
-                          <Text fontSize={"sm"} as="p">
-                            {desc
-                              ? desc
-                              : "Lorem ipsum dolor sit amet consectetur adipisicing."}
-                          </Text>
-                        </ListItem>
-                      </UnorderedList>
-                    </VStack>
-                  );
-                })}
-              </VStack>
-              // PROJECTS
+              </Section>
+              <Section title="PROJECTS">
+                {projects.map((project, index) => (
+                  <ProjectItem key={index} project={project} />
+                ))}
+              </Section>
             </VStack>
           </HStack>
         </div>
       </Box>
-    </>
+    </Box>
   );
 };
+
+const Section = ({ title, children }) => (
+  <Box>
+    <Heading as="h4" size="md" color={"gray.700"} mb={4}>
+      {title}
+    </Heading>
+    {children}
+  </Box>
+);
+
+const EducationItem = ({ education }) => (
+  <VStack spacing={0} alignItems={"flex-start"} pb={2}>
+    <Text fontWeight={"medium"}>{education.degree ? education.degree : "B.Tech Computer Engineering"}</Text>
+    <Text fontSize={"sm"}>{education.school ? education.school : "Stanford University"}</Text>
+    <HStack fontSize={"xs"} fontStyle={"italic"} justifyContent={"space-between"} w={"full"}>
+      <Text>{education.startYr ? education.startYr : 2014} - {education.endYr ? education.endYr : 2018}</Text>
+      <Text>{education.grade ? education.grade : "8.5 CGPA"}</Text>
+    </HStack>
+  </VStack>
+);
+
+const WorkExperienceItem = ({ work }) => (
+  <VStack spacing={0.5} alignItems={"flex-start"} pb={2} lineHeight={1.3}>
+    <Text fontWeight={"medium"}>{work.position ? work.position : "System Analyst"}</Text>
+    <Text fontSize={"sm"}>{work.company ? work.company : "Microsoft"} - {work.type ? work.type : "Full-time"}</Text>
+    <Text fontSize={"xs"} fontStyle={"italic"}>{work.startDate ? work.startDate : "2018-03"} - {work.endDate ? work.endDate : "2021-12"}</Text>
+    <Text fontSize={"sm"} as="p">
+      {work.description
+        ? work.description
+        : "Enhanced system efficiency by identifying and resolving bugs, implemented crucial website enhancements, and significantly improved overall functionality and speed as a System Analyst."}
+    </Text>
+  </VStack>
+);
+
+const ProjectItem = ({ project }) => (
+  <VStack spacing={0.5} alignItems={"flex-start"} pb={2} lineHeight={1.3}>
+    <HStack as="a" href={project.url} target="_blank" spacing={0.5}>
+      <Text fontWeight={"medium"} flex={"row"}>{project.name ? project.name : "Project Name"} </Text>{" "}
+      <BiLinkExternal />
+    </HStack>
+    <UnorderedList pl={5}>
+      <ListItem>
+        <Text fontSize={"sm"} as="p">
+          {project.description
+            ? project.description
+            : "Lorem ipsum dolor sit amet consectetur adipisicing."}
+        </Text>
+      </ListItem>
+    </UnorderedList>
+  </VStack>
+);
 
 export default ResumePreview;

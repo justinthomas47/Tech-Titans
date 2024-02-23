@@ -45,17 +45,17 @@ const Skills = () => {
             <Box borderWidth={'1px'} rounded={'sm'} my={4} p={2}>
                 {skills.length > 0 ? skills.map((skill, index) => (
                     <Tag
-                        size={'lg'}
-                        key={index}
-                        borderRadius='full'
-                        variant='solid'
-                        colorScheme='purple'
-                        m={0.5}
-                        key={skill.id}
-                    >
-                        <TagLabel>{skill.name}</TagLabel>
-                        <TagCloseButton onClick={() => deleteSkill(skill.id)} />
-                    </Tag>
+                    size={'lg'}
+                    borderRadius='full'
+                    variant='solid'
+                    colorScheme='purple'
+                    m={0.5}
+                    key={index} // Remove this line
+                >
+                    <TagLabel>{skill.name}</TagLabel>
+                    <TagCloseButton onClick={() => deleteSkill(skill.id)} />
+                </Tag>
+                
                 )) : (
                     "No Skills Added"
                 )}
