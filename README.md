@@ -1,7 +1,7 @@
+# ResumifyIQ
+
 Website created using create-react-app
 Languages used- html,javascript,css
-
-# ResumifyIQ
 
 ## Technologies Used
 
