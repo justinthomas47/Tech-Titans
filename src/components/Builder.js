@@ -10,22 +10,23 @@ import Work from './BuildSteps/Work'
 const Builder = () => {
     return (
         <Box
-            bg={'white'}
+            bg={'#F7FAFC'} // Light background color
             w={'full'}
             maxW={'xl'}
             rounded={'md'}
-            shadow={'md'}
+            shadow={'lg'}
             overflow={'hidden'}
-            border="2px solid blue"
+            border="1px solid #CBD5E0" // Light border color
             borderRadius="10px"
+            color="#4A5568" // Text color
         >
             <Tabs isFitted variant='enclosed'>
-                <TabList bg="gray.100" p={2} borderRadius="md">
-                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>About</Tab>
-                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Education</Tab>
-                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Skills</Tab>
-                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Work</Tab>
-                    <Tab _selected={{ bg: 'blue.400', color: 'white', fontWeight: 'bold' }}>Projects</Tab>
+                <TabList bg="#EDF2F7" p={2} borderRadius="md"> {/* Light tab list background color */}
+                    <Tab _selected={{ bg: '#E2E8F0', color: '#2D3748', fontWeight: 'bold' }}>About</Tab> {/* Selected tab background color */}
+                    <Tab _selected={{ bg: '#E2E8F0', color: '#2D3748', fontWeight: 'bold' }}>Education</Tab>
+                    <Tab _selected={{ bg: '#E2E8F0', color: '#2D3748', fontWeight: 'bold' }}>Skills</Tab>
+                    <Tab _selected={{ bg: '#E2E8F0', color: '#2D3748', fontWeight: 'bold' }}>Work</Tab>
+                    <Tab _selected={{ bg: '#E2E8F0', color: '#2D3748', fontWeight: 'bold' }}>Projects</Tab>
                 </TabList>
                 <TabPanels>
                     <TabPanel>
