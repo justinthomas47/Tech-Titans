@@ -2,7 +2,7 @@
 
 Website created using create-react-app
 
-Languages used- html,javascript,css
+Languages used- html, Javascript, CSS
 
 ## Technologies Used
 
