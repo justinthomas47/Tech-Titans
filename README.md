@@ -13,7 +13,9 @@ Languages used- html,javascript,css
 ## Installation
 - Node.js: [Download and install Node.js](https://nodejs.org/) (which includes npm).
 -Clone the repository.
+
 -Install dependencies: `npm install`
+
 -Start the development server: `npm start`
 
 ## Usage
